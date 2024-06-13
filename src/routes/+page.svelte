@@ -82,16 +82,81 @@
 
     let severityOptions = [
         { value: 0, text: `&#9734;&#9734;&#9734;&#9734;&#9734;` },
-        { value: 1, text: String.raw`&#9733;&#9734;&#9734;&#9734;` },
-        { value: 2, text: String.raw`&#9733;&#9733;&#9734;&#9734;&#9734;` },
-        { value: 3, text: String.raw`&#9733;&#9733;&#9733;&#9734;&#9734;` },
-        { value: 4, text: String.raw`&#9733;&#9733;&#9733;&#9733;&#9734;` },
-        { value: 5, text: String.raw`&#9733;&#9733;&#9733;&#9733;&#9733;` },
+        { value: 1, text: `&#9733;&#9734;&#9734;&#9734;&#9734;` },
+        { value: 2, text: `&#9733;&#9733;&#9734;&#9734;&#9734;` },
+        { value: 3, text: `&#9733;&#9733;&#9733;&#9734;&#9734;` },
+        { value: 4, text: `&#9733;&#9733;&#9733;&#9733;&#9734;` },
+        { value: 5, text: `&#9733;&#9733;&#9733;&#9733;&#9733;` },
     ];
+
+    import { Map } from 'svelte/reactivity';
+    const answers = $state(new Map<string, number>());
+    for (const x of questions) {
+        answers.set(x.id, 0);
+    }
+
+    let score = $state(0);
+
+	function scorer(): number {
+        return Array.from(answers.values()).reduce((sum, x) => sum + x, 0);
+	}
 
 </script>
 
-<h1>Mast cell survey</h1>
+<h1>Mast Cell Activation Syndrome<br>Survey of Diagnostic Symptoms</h1>
 
-Mast cell survey to help diagnose and treat mast cell activation syndrome (MCAS).
+<p>    
+    This is a survey on Mast Cell Activation Syndrome Symptoms. The higher your
+    score, the more likely you are to have Mast Cell Activation Syndrome. If you
+    have a score over 50, investigate whether you might have Mast Cell
+    Activation Syndrome.
+</p>
+
+<p>
+    <b>Credit:</b>
+    <br><br>The survey was developed by Beth O'Hara for their Master’s
+    Thesis and Doctoral Dissertation. This is based on the work of top experts
+    in the field and Dr. O'Hara's own clinical observations of thousands of
+    people with Mast Cell Activation Syndrome (Afrin L. B., 2016) (Afrin L. B.,
+    2013) (Akin, Valent, & Metcalfe, 2010) (Theoharis C.Theoharides, et. al.,
+    2012).
+</p>
+
+<p>
+    <b>Symptom severity legend:</b>
+    <br>
+    <br><select><option>&#9734;&#9734;&#9734;&#9734;&#9734;</option></select> 0 means not at all
+    <br><select><option>&#9733;&#9734;&#9734;&#9734;&#9734;</option></select> 1 means very mild
+    <br><select><option>&#9733;&#9733;&#9734;&#9734;&#9734;</option></select> 2 means slightly bothersome
+    <br><select><option>&#9733;&#9733;&#9733;&#9734;&#9734;</option></select> 3 means moderate
+    <br><select><option>&#9733;&#9733;&#9733;&#9733;&#9734;</option></select> 4 means severe
+    <br><select><option>&#9733;&#9733;&#9733;&#9733;&#9733;</option></select> 5 means very severe
+</p>
+
+<p>
+    <b>Score your symptoms:</b>
+</p>
+
+{#each questions as question}
+    <label for="{question.id}">
+        <select id="{question.id}" onchange={(event) => {
+            if (event.target) {
+                answers.set(event.target.id, parseInt(event.target.value));
+                score = scorer();
+                console.log(event);
+                console.log(score, event.target.id, event.target.value, typeof event.target.value);
+            }
+        }}>
+            {#each severityOptions as severityOption}
+                <option value={severityOption.value}>
+                    {@html severityOption.text}
+                </option>
+            {/each}
+        </select>
+        {question.text}
+    </label>
+    <br>
+{/each}
+
+<p><b>Your total score: {score}</b></p>
 
