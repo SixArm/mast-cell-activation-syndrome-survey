@@ -14,6 +14,35 @@ git push -u origin main
 ```
 
 
+## CSS styles
+
+Create file `src/app.css` with any global styles:
+
+```css
+h1 {
+  color: red;
+}
+```
+
+Note: using a separate CSS file is not required, but it is recommended, because it makes it easier for user interface designers to change the CSS.
+
+
+## Layout
+
+Create file `src/routes/+layout.svelte` with any layout that you want to use with all the routes:
+
+```html
+<script lang="ts">
+  import './app.css';
+  const { children } = $props()
+</script>
+
+{@render children()}
+```
+
+Note: the Svelte 5 syntax of "render children" replaces the deprecated Svelte 4 syntax of "slot".
+
+
 # Default documentation
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
