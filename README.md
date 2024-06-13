@@ -1,4 +1,20 @@
-# create-svelte
+# Mast cell survey
+
+```
+mkdir mast-cell-survey && cd $_
+npm create svelte@latest
+
+npm install
+git init && git add -A && git commit -m "Init"
+npm run dev -- --open
+
+git remote add origin git@github.com:SixArm/mast-cell-survey.git
+git branch -M main
+git push -u origin main
+```
+
+
+# Default documentation
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 

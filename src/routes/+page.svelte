@@ -1,5 +1,3 @@
-<h1>Mast Cell Survey</h1>
-
 <script lang="ts">
     let questions = [
         { id: `86f0b470f5aa00ebc88f7710ddf63031`, text: `Fatigue` },
