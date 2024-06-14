@@ -50,7 +50,7 @@
         { id: `8f6fe55c51bdb6ee5ca25a4cfbddb64d`, text: `Constipation` },
         { id: `e82e14484c012470e7d6b9fb5bf7a1a6`, text: `Reflux` },
         { id: `09651e40d95935b3c8757799b01ca462`, text: `Pelvic pain` },
-        { id: `bcafad2f7bd0c7719cef5f8f929148d3`, text: `Endometriosis (only for a person who has a uterus)` },
+        { id: `bcafad2f7bd0c7719cef5f8f929148d3`, text: `Endometriosis (only for a person who has/had a uterus)` },
         { id: `87b552ad584c46927d03207696d9cd82`, text: `Decreased libido` },
         { id: `68f5ce505a92fc50b1e823e8ad24ad71`, text: `Erectile dysfunction (only for a person who has/had erections)` },
         { id: `db5e8e535eb8531098138d8f540e2d07`, text: `Muscle pain` },
@@ -125,7 +125,7 @@
 <p>
     <b>Symptom severity legend:</b>
     <br>
-    <br><select><option>&#9734;&#9734;&#9734;&#9734;&#9734;</option></select> 0 means not at all
+    <br><select><option>&#9734;&#9734;&#9734;&#9734;&#9734;</option></select> 0 means none
     <br><select><option>&#9733;&#9734;&#9734;&#9734;&#9734;</option></select> 1 means very mild
     <br><select><option>&#9733;&#9733;&#9734;&#9734;&#9734;</option></select> 2 means slightly bothersome
     <br><select><option>&#9733;&#9733;&#9733;&#9734;&#9734;</option></select> 3 means moderate
